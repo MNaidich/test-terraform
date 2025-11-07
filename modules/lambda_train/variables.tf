@@ -26,7 +26,7 @@ variable "s3_bucket_id" {
 variable "lambda_train_path" {
   description = "Local folder containing the Lambda function code"
   type        = string
-  default     = "lamba_src/lambda_train"
+  default     = "lambda_src/lambda_train"
 }
 
 variable "lambda_handler" {
