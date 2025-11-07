@@ -10,7 +10,7 @@ terraform {
 }
 
 # AWS provider configuration
-provider "aws" {
-  region  = var.aws_region    # AWS region where resources will be created
-  profile = var.aws_profile   # Local AWS CLI profile (optional)
-}
+#provider "aws" {
+#  region  = var.aws_region    # AWS region where resources will be created
+#  profile = var.aws_profile   # Local AWS CLI profile (optional)
+#}
