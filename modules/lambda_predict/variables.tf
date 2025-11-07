@@ -18,6 +18,11 @@ variable "s3_bucket_id" {
   type        = string
 }
 
+variable "s3_bucket_arn" {
+  description = "ARN del bucket S3 al que la Lambda tendrá acceso"
+  type        = string
+}
+
 variable "lambda_process_path" {
   description = "Local path to the source code for the predictor Lambda."
   type        = string
