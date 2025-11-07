@@ -25,6 +25,7 @@ module "ec2" {
   associate_public_ip = var.associate_public_ip
   security_groups_id = var.security_groups_id
   key_name      = var.key_name
+  s3_bucket_name      = var.s3_bucket_name
   s3_bucket_id  = module.s3.bucket_id
   s3_bucket_arn  = module.s3.bucket_arn
 }
@@ -35,7 +36,7 @@ module "lambda_process" {
   project_name  = var.project_name
   environment   = var.environment
   s3_bucket_id  = module.s3.bucket_id
-  s3_bucket_name  = module.s3.bucket_name
+  s3_bucket_name      = var.s3_bucket_name  
   s3_bucket_arn  = module.s3.bucket_arn
   lambda_handler = var.lambda_handler
   lambda_runtime = var.lambda_runtime
@@ -50,7 +51,7 @@ module "lambda_train" {
   project_name  = var.project_name
   environment   = var.environment
   s3_bucket_id  = module.s3.bucket_id
-  s3_bucket_name  = module.s3.bucket_name
+  s3_bucket_name      = var.s3_bucket_name
   s3_bucket_arn  = module.s3.bucket_arn
   lambda_handler = var.lambda_handler
   lambda_runtime = var.lambda_runtime
@@ -65,7 +66,7 @@ module "lambda_predict" {
   project_name  = var.project_name
   environment   = var.environment
   s3_bucket_id  = module.s3.bucket_id
-  s3_bucket_name  = module.s3.bucket_name
+  s3_bucket_name      = var.s3_bucket_name
   s3_bucket_arn  = module.s3.bucket_arn
   lambda_handler = var.lambda_handler
   lambda_runtime = var.lambda_runtime
