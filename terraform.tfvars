@@ -3,6 +3,7 @@ aws_region  = "us-east-1"
 aws_profile = "default" 
 AWS_ACCESS_KEY_ID = "fake_access_key"
 AWS_SECRET_ACCESS_KEY = "fake_secret_key"        
+AWS_DEFAULT_REGION     = us-east-1
 
 # --- Project Metadata ---
 project_name = "demand-forecasting"
