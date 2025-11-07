@@ -24,6 +24,11 @@ variable "AWS_SECRET_ACCESS_KEY" {
   sensitive   = true
 }
 
+variable "AWS_DEFAULT_REGION" {
+  type = string
+}
+
+
 #############################
 # --- Project Metadata ---
 #############################
