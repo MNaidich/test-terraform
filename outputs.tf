@@ -39,6 +39,6 @@ output "lambda_train_name" {
 
 # --- Lambda: Predict ---
 output "lambda_predict_name" {
-  description = "Lambda function name for model prediction"
+  description = "Name of the Lambda Predict function"
   value       = module.lambda_predict.lambda_name
 }

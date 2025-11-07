@@ -15,5 +15,10 @@ output "predictor_iam_role_arn" {
 
 output "lambda_name" {
   description = "Name of the Lambda function"
-  value       = aws_lambda_function.predictor.function_name
+  value       = aws_lambda_function.forecasting_predictor.function_name
+}
+
+output "lambda_arn" {
+  description = "ARN of the Lambda function"
+  value       = aws_lambda_function.forecasting_predictor.arn
 }
