@@ -19,8 +19,8 @@ default_tags = {
 # --- EC2 Configuration ---
 instance_type = "t3.medium"
 key_name      = "demand-forecasting-instance"
-subnet_id = ""
-associate_public_ip = ""
+subnet_id = false
+associate_public_ip = false
 security_group_ids = []
 
 # --- Lambda Source Directories (Local paths for packaging) ---
