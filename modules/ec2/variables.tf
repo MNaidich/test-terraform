@@ -8,6 +8,12 @@ variable "environment" {
   type        = string
 }
 
+variable "ami_id" {
+  description = "AMI ID to use for EC2 instance"
+  type        = string
+  default     = "ami-1234567890abcdef0" # delete variable
+}
+
 variable "instance_type" {
   description = "EC2 instance type (e.g., t3.medium)"
   type        = string

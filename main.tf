@@ -1,11 +1,11 @@
 # Apply default tags to all AWS resources
 provider "aws" {
-  access_key = "fake"
-  secret_key = "fake"
-  region     = "us-east-1"
-  skip_credentials_validation = true
-  skip_metadata_api_check     = true
-  skip_requesting_account_id  = true
+  access_key = var.AWS_ACCESS_KEY_ID
+  secret_key = var.AWS_SECRET_ACCESS_KEY
+  region     = var.AWS_DEFAULT_REGION
+  skip_credentials_validation = true #delete
+  skip_metadata_api_check     = true #delete
+  skip_requesting_account_id  = true #delete
 
   default_tags {
     tags = var.default_tags

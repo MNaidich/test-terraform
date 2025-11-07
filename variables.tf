@@ -28,6 +28,11 @@ variable "AWS_DEFAULT_REGION" {
   type = string
 }
 
+variable "ami_id" {
+  description = "AMI ID to use for EC2 instance"
+  type        = string
+  default     = "ami-1234567890abcdef0" # delete variable
+}
 
 #############################
 # --- Project Metadata ---

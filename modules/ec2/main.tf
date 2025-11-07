@@ -53,7 +53,7 @@ resource "aws_iam_instance_profile" "app_profile" {
 # --- 5. EC2 Instance Definition ---
 resource "aws_instance" "streamlit_host" {
 
-  ami                    = data.aws_ami.latest_amazon_linux.id
+  ami                    = var.ami_id #delete and change for: data.aws_ami.latest_amazon_linux.id
   instance_type          = var.instance_type
   subnet_id              = var.subnet_id
   associate_public_ip_address = var.associate_public_ip
