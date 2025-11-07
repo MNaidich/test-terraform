@@ -1,6 +1,8 @@
 # --- AWS Provider Configuration ---
 aws_region  = "us-east-1"            
-aws_profile = "default"              
+aws_profile = "default" 
+AWS_ACCESS_KEY_ID = "fake_access_key"
+AWS_SECRET_ACCESS_KEY = "fake_secret_key"        
 
 # --- Project Metadata ---
 project_name = "demand-forecasting"
@@ -18,6 +20,7 @@ default_tags = {
 instance_type = "t3.medium"
 key_name      = "demand-forecasting-instance"
 subnet_id = ""
+instance_type = "t3.medium"
 associate_public_ip = ""
 security_groups_id = []
 
