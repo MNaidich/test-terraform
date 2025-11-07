@@ -1,6 +1,6 @@
 # 1. IAM Role for Lambda Execution
 resource "aws_iam_role" "lambda_role" {
-  name = "${var.project_name}-${var.environment}-lambda-process-role"
+  name = "lambda-process-role"
 
   assume_role_policy = jsonencode({
     Version = "2012-10-17",

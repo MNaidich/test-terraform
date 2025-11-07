@@ -1,6 +1,6 @@
 # 1. IAM Role for the Trainer Lambda
 resource "aws_iam_role" "lambda_role" {
-  name = "${var.project_name}-${var.environment}-lambda-train-role"
+  name = "lambda-train-role"
 
   assume_role_policy = jsonencode({
     Version = "2012-10-17",
