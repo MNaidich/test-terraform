@@ -6,6 +6,7 @@ provider "aws" {
   skip_credentials_validation = true #delete
   skip_metadata_api_check     = true #delete
   skip_requesting_account_id  = true #delete
+  s3_force_path_style         = true #delete
 
   default_tags {
     tags = var.default_tags

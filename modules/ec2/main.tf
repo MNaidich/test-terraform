@@ -83,12 +83,12 @@ resource "aws_instance" "streamlit_host" {
 }
 
 # --- 6. Get the Latest Amazon Linux AMI ---
-data "aws_ami" "latest_amazon_linux" {
-  most_recent = true
-  owners      = ["amazon"]
+#data "aws_ami" "latest_amazon_linux" {
+#  most_recent = true
+#  owners      = ["amazon"]
 
-  filter {
-    name   = "name"
-    values = ["amzn2-ami-hvm-*-x86_64-gp2"]
-  }
-}
+#  filter {
+#    name   = "name"
+#    values = ["amzn2-ami-hvm-*-x86_64-gp2"]
+#  }
+#}
