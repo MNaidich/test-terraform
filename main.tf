@@ -20,7 +20,7 @@ module "ec2" {
   source        = "./modules/ec2"
   project_name  = var.project_name
   environment   = var.environment
-  instance_type = var.instance_tryp
+  instance_type = var.instance_type
   subnet_id       = var.subnet_id
   associate_public_ip = var.associate_public_ip
   security_group_ids = var.security_group_ids

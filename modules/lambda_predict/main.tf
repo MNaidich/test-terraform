@@ -25,7 +25,26 @@ resource "aws_iam_role_policy_attachment" "predictor_log_policy_attach" {
   policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
 }
 
-# S3 Full Access (reuses policy from lambda_process)
+# S3 Full Access (custom policy local to this module)
+resource "aws_iam_policy" "lambda_s3_full_access_policy" {
+  name        = "${var.project_name}-${var.environment}-lambda-predict-s3-policy"
+  description = "Allows the Lambda predictor function to access the project S3 bucket."
+
+  policy = jsonencode({
+    Version = "2012-10-17",
+    Statement = [
+      {
+        Effect = "Allow",
+        Action = ["s3:*"],
+        Resource = [
+          var.s3_bucket_arn,
+          "${var.s3_bucket_arn}/*"
+        ]
+      }
+    ]
+  })
+}
+
 resource "aws_iam_role_policy_attachment" "predictor_s3_attach" {
   role       = aws_iam_role.lambda_predictor_role.name
   policy_arn = aws_iam_policy.lambda_s3_full_access_policy.arn
@@ -33,7 +52,7 @@ resource "aws_iam_role_policy_attachment" "predictor_s3_attach" {
 
 # Custom policy for invoking SageMaker endpoints
 resource "aws_iam_policy" "sagemaker_predict_policy" {
-  name        = "sagemaker-prediction-only-policy"
+  name        = "${var.project_name}-${var.environment}-sagemaker-predict-policy"
   description = "Allows the Lambda to invoke SageMaker endpoints for prediction."
 
   policy = jsonencode({
@@ -61,12 +80,12 @@ resource "aws_iam_role_policy_attachment" "predictor_sagemaker_attach" {
 data "archive_file" "predictor_zip" {
   type        = "zip"
   source_dir  = var.lambda_predict_path
-  output_path = "lambda_zips/predictor.zip"
+  output_path = "${path.module}/lambda_zips/predictor.zip"
 }
 
 # Define the Lambda function
 resource "aws_lambda_function" "forecasting_predictor" {
-  function_name    = "forecasting-predictor-lambda"
+  function_name    = "${var.project_name}-${var.environment}-forecasting-predictor"
   filename         = data.archive_file.predictor_zip.output_path
   source_code_hash = data.archive_file.predictor_zip.output_base64sha256
   handler          = var.lambda_handler
@@ -90,17 +109,17 @@ resource "aws_lambda_function" "forecasting_predictor" {
 }
 
 
-# TRIGGER 1: S3 (processed/ folder updates)
+# 4. TRIGGER 1: S3 (processed/ folder updates)
 resource "aws_lambda_permission" "allow_s3_invoke_predict" {
   statement_id  = "AllowExecutionFromS3Processed"
   action        = "lambda:InvokeFunction"
   function_name = aws_lambda_function.forecasting_predictor.function_name
   principal     = "s3.amazonaws.com"
-  source_arn    = aws_s3_bucket.streamlit_bucket.arn
+  source_arn    = var.s3_bucket_arn
 }
 
 resource "aws_s3_bucket_notification" "processed_file_trigger" {
-  bucket = aws_s3_bucket.streamlit_bucket.id
+  bucket = var.s3_bucket_id
 
   lambda_function {
     events              = ["s3:ObjectCreated:*"]
@@ -114,9 +133,9 @@ resource "aws_s3_bucket_notification" "processed_file_trigger" {
 }
 
 
-# TRIGGER 2: EventBridge (monthly at 01:00 AM) 
+# 5. TRIGGER 2: EventBridge (monthly at 01:00 AM) 
 resource "aws_cloudwatch_event_rule" "monthly_predict_rule" {
-  name                = "monthly-forecasting-predict-rule"
+  name                = "${var.project_name}-${var.environment}-monthly-predict-rule"
   schedule_expression = "cron(0 1 1 * ? *)" # 1 AM, day 1 of each month
 }
 
