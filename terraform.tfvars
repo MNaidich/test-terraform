@@ -20,7 +20,6 @@ default_tags = {
 instance_type = "t3.medium"
 key_name      = "demand-forecasting-instance"
 subnet_id = ""
-instance_type = "t3.medium"
 associate_public_ip = ""
 security_groups_id = []
 
