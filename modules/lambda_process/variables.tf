@@ -26,7 +26,7 @@ variable "s3_bucket_arn" {
 variable "lambda_process_path" {
   description = "Local folder containing the Lambda function code"
   type        = string
-  default     = "lambda_src/file_processor"
+  default     = "lambda_src/lambda_process"
 }
 
 variable "lambda_handler" {

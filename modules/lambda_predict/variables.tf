@@ -23,10 +23,10 @@ variable "s3_bucket_arn" {
   type        = string
 }
 
-variable "lambda_process_path" {
-  description = "Local path to the source code for the predictor Lambda."
+variable "lambda_predict_path" {
+  description = "Local folder containing the Lambda function code"
   type        = string
-  default     = "lambda_src/forecaster"
+  default     = "lambda_src/lambda_predict"
 }
 
 variable "lambda_handler" {
