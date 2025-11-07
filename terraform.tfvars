@@ -30,7 +30,7 @@ lambda_train_path   = "lambda_src/lambda_train"
 lambda_predict_path = "lambda_src/lambda_predict"
 lambda_handler = "lambda_funtion.lambda_handler"
 lambda_runtime = "python3.11"
-lambda_timeout = 899
+lambda_timeout = 899 #
 lambda_memory = 512
 
 # --- S3 Bucket Name (must be globally unique) ---
