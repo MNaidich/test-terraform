@@ -18,6 +18,11 @@ variable "s3_bucket_arn" {
   type        = string
 }
 
+variable "s3_bucket_id" {
+  description = "ID del bucket S3 donde la Lambda leerá o guardará datos"
+  type        = string
+}
+
 variable "lambda_train_path" {
   description = "Path to the Lambda training code"
   type        = string
