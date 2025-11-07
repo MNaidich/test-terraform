@@ -70,7 +70,7 @@ variable "associate_public_ip" {
   default     = false
 }
 
-variable "security_groups_id" {
+variable "security_group_ids" {
   description = "List of security group IDs to attach to the EC2 instance"
   type        = list(string)
   default     = []

@@ -1,5 +1,20 @@
+variable "project_name" {
+  description = "Project name prefix"
+  type        = string
+}
+
+variable "environment" {
+  description = "Entorno de despliegue (dev, staging, prod)"
+  type        = string
+}
+
 variable "s3_bucket_name" {
   description = "Name of the main S3 bucket used for forecasting data and outputs."
+  type        = string
+}
+
+variable "s3_bucket_id" {
+  description = "ID of the S3 bucket used by the Lambda function"
   type        = string
 }
 

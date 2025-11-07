@@ -42,7 +42,6 @@ module "lambda_process" {
   lambda_runtime = var.lambda_runtime
   lambda_timeout = var.lambda_timeout
   lambda_memory = var.lambda_memory
-  role_name     = "lambda-process-role"
 }
 
 # --- Lambda: Train Model ---
@@ -57,7 +56,6 @@ module "lambda_train" {
   lambda_runtime = var.lambda_runtime
   lambda_timeout = var.lambda_timeout
   lambda_memory = var.lambda_memory
-  role_name     = "lambda-train-role"
 }
 
 # --- Lambda: Predict ---
@@ -72,5 +70,4 @@ module "lambda_predict" {
   lambda_runtime = var.lambda_runtime
   lambda_timeout = var.lambda_timeout
   lambda_memory = var.lambda_memory
-  role_name     = "lambda-predict-role"
 }
