@@ -12,3 +12,8 @@ output "predictor_iam_role_arn" {
   description = "IAM role ARN used by the forecasting predictor Lambda."
   value       = aws_iam_role.lambda_predictor_role.arn
 }
+
+output "lambda_name" {
+  description = "Name of the Lambda function"
+  value       = aws_lambda_function.predictor.function_name
+}
