@@ -21,7 +21,7 @@ instance_type = "t3.medium"
 key_name      = "demand-forecasting-instance"
 subnet_id = ""
 associate_public_ip = ""
-security_groups_id = []
+security_group_ids = []
 
 # --- Lambda Source Directories (Local paths for packaging) ---
 lambda_process_path = "lambda_src/lambda_process"

@@ -23,7 +23,7 @@ module "ec2" {
   instance_type = var.instance_tryp
   subnet_id       = var.subnet_id
   associate_public_ip = var.associate_public_ip
-  security_groups_id = var.security_groups_id
+  security_group_ids = var.security_group_ids
   key_name      = var.key_name
   s3_bucket_name      = var.s3_bucket_name
   s3_bucket_id  = module.s3.bucket_id
